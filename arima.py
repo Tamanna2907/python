@@ -27,7 +27,7 @@ model = ARIMA(df['Days_Gap'], order=(1, 0, 0))
 model_fit = model.fit()
 
 # Summary of the model
-# print(model_fit.summary())
+print(model_fit.summary())
 
 
 # Predict the next cycle gap (using get_forecast for version 0.12+)
