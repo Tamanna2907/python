@@ -1,6 +1,5 @@
 import pandas as pd
 from statsmodels.tsa.arima.model import ARIMA
-import pmdarima  as pm
 
 # Sample period data: Days between periods
 # data = {
@@ -24,7 +23,7 @@ df['Start_Date'] = pd.to_datetime(df['Start_Date'])
 df.set_index('Start_Date', inplace=True)
 
 # Fit the ARIMA model (order = p, d, q)
-model = ARIMA(df['Days_Gap'], order=(4, 0, 0))
+model = ARIMA(df['Days_Gap'], order=(1, 0, 0))
 model_fit = model.fit()
 
 # Summary of the model
@@ -39,6 +38,3 @@ predicted_mean = forecast.predicted_mean
 print(f"Predicted gap for the next period: {predicted_mean.iloc[0]:.2f} days")
 
 
-# while using auto arima for p,d,q
-# model_auto = pm.auto_arima(df['Days_Gap'], seasonal=False, stepwise=True)
-# print(model_auto.order)
